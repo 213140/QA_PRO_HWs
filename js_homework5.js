@@ -71,3 +71,6 @@ console.log(services.maxPrice());
 /* Solution #2 is skip this filtering as it was't discussed on the lesson and use Number.isNaN() method during 'for' loop (lines 16, 29, 47). 
 /* It'll helps us skip adding/overwriting sum/min/max values if value of Object item will be an method (than get NaN from parseInt). 
 */
+
+/* Additional comments #2: Instead of name 'services' inside of object 'services' possibly to use 'this'. Was checked and works the same)
+*/ 
