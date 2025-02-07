@@ -10,51 +10,97 @@ var services = {
     "Миття голови": "100 грн",
     "price" : function () {
         let sum = 0;
-        
-        const allThisObjectItems = Object.keys(services).filter(key => typeof services[key] !== "function");
-        for(let i = 0; i < allThisObjectItems.length; i++){
-                sum += Number.parseInt(services[allThisObjectItems[i]]);
-            }
-        // Alternative way of calculating sum
-        // allThisObjectItems.forEach((element) => sum += Number.parseInt(services[element]));
 
+        /* ver1
+        // const allThisObjectItems = Object.keys(services).filter(key => typeof services[key] !== "function");
+        */
+
+        for(const item in services){
+            let currentPrice = Number.parseInt(services[item]);
+            if(Number.isNaN(currentPrice) == false){
+            sum += currentPrice;
+        }
+
+        /* ver1
+        // for(let i = 0; i < allThisObjectItems.length; i++){
+        //         sum += Number.parseInt(services[allThisObjectItems[i]]);
+        //     }
+        */
+        
+        /* Alternative way of calculating sum
+        // allThisObjectItems.forEach((element) => sum += Number.parseInt(services[element]));
+        */
+        }
         return sum;
     },
     "minPrice" : function () {
-        let min = 0;
+        let min = +Infinity;
         
-        const allThisObjectItems = Object.keys(services).filter(key => typeof services[key] !== "function");
-        for(let i = 0; i < allThisObjectItems.length; i++){
-            let currentPrice = Number.parseInt(services[allThisObjectItems[i]]);
+        /* ver1
+        // const allThisObjectItems = Object.keys(services).filter(key => typeof services[key] !== "function");
+        */
+
+        for(const item in services){
+            let currentPrice = Number.parseInt(services[item]);
+            
             if(Number.isNaN(currentPrice) === false)
             {
-                if(i == 0){min = currentPrice}
-                else if(min > currentPrice)
-                {
+                if(min > currentPrice){
                     min = currentPrice;
                 }
             }
-        // Alternative way of calculating sum
+        /* ver1
+        // for(let i = 0; i < allThisObjectItems.length; i++){
+        //     let currentPrice = Number.parseInt(services[allThisObjectItems[i]]);
+        //     if(Number.isNaN(currentPrice) === false)
+        //     {
+        //         if(i == 0){min = currentPrice}
+        //         else if(min > currentPrice)
+        //         {
+        //             min = currentPrice;
+        //         }
+        //     }
+        */
+
+        /* Alternative way of calculating sum
         // allThisObjectItems.forEach((element) => sum += Number.parseInt(services[element]));
+        */
         }
         return min;
     },
     "maxPrice" : function () {
-        let max = 0;
+        let max = -Infinity;
         
-        const allThisObjectItems = Object.keys(services).filter(key => typeof services[key] !== "function");
-        for(let i = 0; i < allThisObjectItems.length; i++){
-            let currentPrice = Number.parseInt(services[allThisObjectItems[i]]);
+        /* ver1
+        // const allThisObjectItems = Object.keys(services).filter(key => typeof services[key] !== "function");
+        */
+
+        for(const item in services){
+            let currentPrice = Number.parseInt(services[item]);
+            
             if(Number.isNaN(currentPrice) === false)
             {
-                if(i == 0){max = currentPrice}
-                else if(max < currentPrice)
-                {
+                if(max < currentPrice){
                     max = currentPrice;
                 }
             }
-        // Alternative way of calculating sum
+        
+        /* ver1
+        // for(let i = 0; i < allThisObjectItems.length; i++){
+        //     let currentPrice = Number.parseInt(services[allThisObjectItems[i]]);
+        //     if(Number.isNaN(currentPrice) === false)
+        //     {
+        //         if(i == 0){max = currentPrice}
+        //         else if(max < currentPrice)
+        //         {
+        //             max = currentPrice;
+        //         }
+        //     }
+        */
+
+        /* Alternative way of calculating sum
         // allThisObjectItems.forEach((element) => sum += Number.parseInt(services[element]));
+        */
         }
         return max;
     }
